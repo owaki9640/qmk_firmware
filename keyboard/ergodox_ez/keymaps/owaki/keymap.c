@@ -3,10 +3,10 @@
 #include "action_layer.h"
 
 #define BASE 0   // Basic layer
-#define ARRW 1   // Arrow and keypad
+#define KPAD 1   // Arrow and keypad
 #define MOUS 2   // Mouse keys
 #define BASE_R 3 // Reverse basic layer
-#define ARRW_R 4 // Reverse arrow and keypad
+#define KPAD_R 4 // Reverse arrow and keypad
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
         KC_GRV,     KC_1,     KC_2,    KC_3,    KC_4,    KC_5,                KC_ESC,
-        KC_TAB,     KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,                TG(ARRW),
+        KC_TAB,     KC_Q,     KC_W,    KC_E,    KC_R,    KC_T,                TG(KPAD),
         KC_LCTRL,   KC_A,     KC_S,    KC_D,    KC_F,    KC_G,
         KC_LSFT,    KC_Z,     KC_X,    KC_C,    KC_V,    KC_B,                ALL_T(KC_NO),
         TG(BASE_R), MO(MOUS), KC_NO,   KC_LBRC, KC_RBRC,
@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 KC_ENT,  KC_DEL,              KC_LGUI,
         // right hand
              KC_EQL,       KC_6,                KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-             TG(ARRW),     KC_Y,                KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
+             TG(KPAD),     KC_Y,                KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
                            KC_H,                KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
              MEH_T(KC_NO), KC_N,                KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                                                 KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, TG(BASE_R),
@@ -53,47 +53,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_RALT,
              KC_RGUI,      KC_BSPC,             KC_SPC
     ),
-/* Keymap 1: Arrow and Keypad Layer
+/* Keymap 1: Keypad and Fn Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |   *  |   /  |   =  |NumLck|      |  NO  |           |  NO  |      |PrtScr|ScrLck|Pause |      |  INT1  |
+ * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  |  Esc |           |  KP= |NumLck|  KP7 |  KP8 |  KP9 |  KP* |  INT1  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   -  |   9  |   8  |   7  |      |      |           |      |      |Insert| Home | PgUp |      |  INT3  |
+ * |   F7   |  F8  |  F9  |  F10 |  F11 |  F12 | TRNS |           | TRNS |  NO  |  KP4 |  KP5 |  KP6 |  KP- |  INT3  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   +  |   6  |   5  |   4  |      |------|           |------| Left | Down |  Up  |Right |      |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |Enter |   3  |   2  |   1  | ESC  |      |           |      | ESC  |Delete| End  |PgDown|      |        |
+ * |  PrtSc |ScrLck| Pause|Insert| Home | PgUp |------|           |------|  NO  |  KP1 |  KP2 |  KP3 |  KP+ |KP Enter|
+ * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
+ * |   NO   |  NO  |  NO  |Delete|  End |PgDown|      |           |      |  NO  |  KP0 |  KP, |  KP. |  KP/ |   NO   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |  L4  |Enter |   .  |   0  |   0  |                                       |      |      |   ]  | NUHS |  L4  |
+ *   |  L4  |Enter |   .  |   ]  | NUHS |                                       | Left | Down |  Up  | Right|  L4  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | ~L4  |      |       |      | ~L4  |
+ *                                        | ~L4  | LCtl |       | RCtl | ~L4  |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |   0  |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      | LAlt |       | RAlt |      |      |
+ *                                 |Enter | DEL  |------|       |------|  BS  |Space |
+ *                                 |      |      | LGui |       | RGui |      |      |
  *                                 `--------------------'       `--------------------'
  */
-// Arrow and Keypad
-[ARRW] = KEYMAP(
+// Keypad and Fn
+[KPAD] = KEYMAP(
        // left hand
-       KC_TRNS,    KC_PAST, KC_PSLS, KC_PEQL, KC_NLCK, KC_TRNS,   KC_NO,
-       KC_TRNS,    KC_PMNS, KC_P9,   KC_P8,   KC_P7,   KC_TRNS,   KC_TRNS,
-       KC_TRNS,    KC_PPLS, KC_P6,   KC_P5,   KC_P4,   KC_TRNS,
-       KC_TRNS,    KC_PENT, KC_P3,   KC_P2,   KC_P1,   KC_ESC,    KC_TRNS,
-       TG(ARRW_R), KC_PENT, KC_PDOT, KC_P0,   KC_P0,
-                                                       MO(ARRW_R), KC_TRNS,
-                                                                   KC_TRNS,
-                                              KC_TRNS, KC_P0,      KC_TRNS,
+       KC_F1,      KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,      KC_ESC,
+       KC_F7,      KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,     KC_TRNS,
+       KC_PSCR,    KC_SLCK, KC_PAUS, KC_INS,  KC_HOME, KC_PGUP,
+       KC_NO,      KC_NO,   KC_NO,   KC_DEL,  KC_END,  KC_PGDN,    ALL_T(KC_NO),
+       TG(KPAD_R), KC_PENT, KC_PDOT, KC_RBRC, KC_NUHS,
+                                                       MO(KPAD_R), KC_LCTL,
+                                                                   KC_LALT,
+                                              KC_ENT,  KC_DEL,     KC_LGUI,
        // right hand
-       KC_NO,   KC_TRNS,    KC_PSCR, KC_SLCK, KC_PAUS, KC_TRNS, KC_RO,
-       KC_TRNS, KC_TRNS,    KC_INS,  KC_HOME, KC_PGUP, KC_TRNS, KC_JYEN,
-                KC_LEFT,    KC_DOWN, KC_UP,   KC_RGHT, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_ESC,     KC_DEL,  KC_END,  KC_PGDN, KC_TRNS, KC_TRNS,
-                            KC_TRNS, KC_TRNS, KC_RBRC, KC_NUHS, TG(ARRW_R),
-       KC_TRNS, MO(ARRW_R),
-       KC_TRNS,
-       KC_TRNS, KC_TRNS,    KC_TRNS
+       KC_PEQL,      KC_NLCK,    KC_P7,   KC_P8,   KC_P9,   KC_PAST, KC_RO,
+       KC_TRNS,      KC_NO,      KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_JYEN,
+                     KC_NO,      KC_P1,   KC_P2,   KC_P3,   KC_PPLS, KC_PENT,
+       MEH_T(KC_NO), KC_NO,      KC_P0,   KC_PCMM, KC_PDOT, KC_PSLS, KC_NO,
+                                 KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, TG(KPAD_R),
+       KC_RCTL,      MO(KPAD_R),
+       KC_RALT,
+       KC_RGUI,      KC_BSPC,    KC_SPC
 ),
 /* Keymap 2: Mouse keys
  *
@@ -178,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_TRNS, KC_TRNS
 ),
 //
-[ARRW_R] = KEYMAP(
+[KPAD_R] = KEYMAP(
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -200,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const uint16_t PROGMEM fn_actions[] = {
-    [1] = ACTION_LAYER_TAP_TOGGLE(ARRW)                // FN1 - Momentary Layer 1 (Symbols)
+    [1] = ACTION_LAYER_TAP_TOGGLE(KPAD)                // FN1 - Momentary Layer 1 (Symbols)
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
@@ -238,7 +238,7 @@ void matrix_scan_user(void) {
       // TODO: Make this relevant to the ErgoDox EZ.
         case BASE:
             break;
-        case ARRW:
+        case KPAD:
             ergodox_right_led_on(1);
             ergodox_right_led_set(1, 7);
             break;
@@ -260,7 +260,7 @@ void matrix_scan_user(void) {
             ergodox_right_led_on(3);
             ergodox_right_led_set(3, 7);
             break;
-        case ARRW_R:
+        case KPAD_R:
             ergodox_right_led_on(1);
             ergodox_right_led_set(1, 7);
             ergodox_right_led_on(3);
