@@ -27,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        | ~L3  |      |       |      | ~L3  |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      | LAlt |       | RAlt |      |      |
- *                                 |  BS  | DEL  |------|       |------|Enter |Space |
+ *                                 |Enter | DEL  |------|       |------|  BS  |Space |
  *                                 |      |      | LGui |       | RGui |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TG(BASE_R), MO(MOUS), KC_NO,   KC_LBRC, KC_RBRC,
                                                          LT(BASE_R,KC_LANG2), KC_LCTL,
                                                                               KC_LALT,
-                                                KC_BSPC, KC_DEL,              KC_LGUI,
+                                                KC_ENT,  KC_DEL,              KC_LGUI,
         // right hand
              KC_EQL,       KC_6,                KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
              TG(ARRW),     KC_Y,                KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, TG(BASE_R),
              KC_RCTL,      LT(BASE_R,KC_LANG1),
              KC_RALT,
-             KC_RGUI,      KC_ENT,              KC_SPC
+             KC_RGUI,      KC_BSPC,             KC_SPC
     ),
 /* Keymap 1: Arrow and Keypad Layer
  *
