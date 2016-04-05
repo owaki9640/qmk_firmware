@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
  * |   NO   |  NO  |  NO  |Delete|  End |PgDown|      |           |      |  NO  |  KP0 |  KP, |  KP. |  KP/ |   NO   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |  L4  |Enter |   .  |   ]  | NUHS |                                       | Left | Down |  Up  | Right|  L4  |
+ *   |  L4  |  NO  |  NO  |   ]  | NUHS |                                       | Left | Down |  Up  | Right|  L4  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | ~L4  | LCtl |       | RCtl | ~L4  |
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_F7,      KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,     KC_TRNS,
        KC_PSCR,    KC_SLCK, KC_PAUS, KC_INS,  KC_HOME, KC_PGUP,
        KC_NO,      KC_NO,   KC_NO,   KC_DEL,  KC_END,  KC_PGDN,    ALL_T(KC_NO),
-       TG(KPAD_R), KC_PENT, KC_PDOT, KC_RBRC, KC_NUHS,
+       TG(KPAD_R), KC_NO,   KC_NO,   KC_RBRC, KC_NUHS,
                                                        MO(KPAD_R), KC_LCTL,
                                                                    KC_LALT,
                                               KC_ENT,  KC_DEL,     KC_LGUI,
