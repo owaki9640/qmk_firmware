@@ -179,25 +179,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 KC_LALT,
                 KC_LGUI,      KC_DEL,   KC_ENT
 ),
-//
+/* Keymap 4: Reverse keypad and Fn Layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |  INT1  |  KP* |  KP9 |  KP8 |  KP7 |NumLck|  KP= |           |  Esc |  F5  |  F4  |  F3  |  F2  |  F1  |  PrtSc |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |  INT3  |  KP- |  KP6 |  KP5 |  KP4 |  NO  |  NO  |           |  NO  |  F10 |  F9  |  F8  |  F7  |  F6  |  ScrLk |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |KP Enter|  KP+ |  KP3 |  KP2 |  KP1 |  NO  |------|           |------| PgUp | Home |Insert|  F12 |  F11 |  Pause |
+ * |--------+------+------+------+------+------| Meh  |           | Hyper|------+------+------+------+------+--------|
+ * | RShift |  KP/ |  KP. |  KP, |  KP0 |  NO  |      |           |      |PgDown| End  |Delete|  NO  |  NO  | LShift |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   | TRNS | Left |  Up  | Down | Right|                                       | NUHS |   ]  |  NO  |  NO  | TRNS |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        | TRNS | RCtl |       | LCtl | TRNS |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      | RAlt |       | LAlt |      |      |
+ *                                 |Sapce |  BS  |------|       |------| DEL  |Enter |
+ *                                 |      |      | RGui |       | LGui |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+// Reverse keypad and Fn
 [KPAD_R] = KEYMAP(
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                    KC_TRNS, KC_TRNS,
-                                                             KC_TRNS,
-                                           KC_TRNS, KC_TRNS, KC_TRNS,
-    // right hand
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS,
-       KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS
+        // left hand
+        KC_INT1,  KC_PAST,  KC_P9,    KC_P8,    KC_P7,    KC_NLCK,  KC_PEQL,
+        KC_INT3,  KC_PMNS,  KC_P6,    KC_P5,    KC_P4,    KC_NO,    KC_NO,
+        KC_PENT,  KC_PPLS,  KC_P3,    KC_P2,    KC_P1,    KC_NO,
+        KC_RSFT,  KC_PSLS,  KC_PDOT,  KC_PCMM,  KC_P0,    KC_NO,    MEH_T(KC_NO),
+        KC_TRNS,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RGHT,
+                                                          KC_TRNS,  KC_RCTL,
+                                                                    KC_RALT,
+                                                KC_SPC,   KC_BSPC,  KC_RGUI,
+        // right hand
+                KC_ESC,       KC_F5,    KC_F4,    KC_F3,    KC_F2,    KC_F1,    KC_PSCR,
+                KC_NO,        KC_F10,   KC_F9,    KC_F8,    KC_F7,    KC_F6,    KC_SLCK,
+                              KC_PGUP,  KC_HOME,  KC_INS,   KC_F12,   KC_F11,   KC_PAUS,
+                ALL_T(KC_NO), KC_PGDN,  KC_END,   KC_DEL,   KC_NO,    KC_NO,    KC_LSFT,
+                                        KC_NUHS,  KC_RBRC,  KC_NO,    KC_NO,    KC_TRNS,
+                KC_LCTL,      KC_TRNS,
+                KC_LALT,
+                KC_LGUI,      KC_DEL,   KC_ENT
 ),
 };
 
