@@ -4,9 +4,9 @@
 
 #define BASE 0   // Basic layer
 #define KPAD 1   // Arrow and keypad
-#define MOUS 2   // Mouse keys
-#define BASE_R 3 // Reverse basic layer
-#define KPAD_R 4 // Reverse arrow and keypad
+#define BASR 2   // Reverse basic layer
+#define KPDR 3   // Reverse arrow and keypad
+#define MOUS 4   // Mouse keys
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -35,23 +35,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = KEYMAP(  // layer 0 : default
         // left hand
-        KC_GRV,     KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                 KC_ESC,
-        KC_TAB,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                 KC_FN1,
+        KC_GRV,     KC_1,     KC_2,     KC_3,     KC_4,     KC_5,               KC_ESC,
+        KC_TAB,     KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,               KC_FN1,
         KC_LCTRL,   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,
-        KC_LSFT,    KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                 ALL_T(KC_NO),
-        KC_FN3,     KC_FN2,   KC_FN1,   KC_LBRC,  KC_RBRC,
-                                                            LT(BASE_R,KC_LANG2),  KC_LCTL,
-                                                                                  KC_LALT,
-                                                  KC_ENT,   KC_DEL,               KC_LGUI,
+        KC_LSFT,    KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,               ALL_T(KC_NO),
+        KC_FN2,     KC_FN4,   KC_FN1,   KC_LBRC,  KC_RBRC,
+                                                            LT(BASR,KC_LANG2),  KC_LCTL,
+                                                                                KC_LALT,
+                                                  KC_ENT,   KC_DEL,             KC_LGUI,
         // right hand
-                KC_EQL,       KC_6,                 KC_7,     KC_8,     KC_9,   KC_0,     KC_MINS,
-                KC_FN1,       KC_Y,                 KC_U,     KC_I,     KC_O,   KC_P,     KC_BSLS,
-                              KC_H,                 KC_J,     KC_K,     KC_L,   KC_SCLN,  KC_QUOT,
-                MEH_T(KC_NO), KC_N,                 KC_M,     KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-                                                    KC_LEFT,  KC_DOWN,  KC_UP,  KC_RGHT,  KC_FN3,
-                KC_RCTL,      LT(BASE_R,KC_LANG1),
+                KC_EQL,       KC_6,               KC_7,     KC_8,     KC_9,   KC_0,     KC_MINS,
+                KC_FN1,       KC_Y,               KC_U,     KC_I,     KC_O,   KC_P,     KC_BSLS,
+                              KC_H,               KC_J,     KC_K,     KC_L,   KC_SCLN,  KC_QUOT,
+                MEH_T(KC_NO), KC_N,               KC_M,     KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
+                                                  KC_LEFT,  KC_DOWN,  KC_UP,  KC_RGHT,  KC_FN2,
+                KC_RCTL,      LT(BASR,KC_LANG1),
                 KC_RALT,
-                KC_RGUI,      KC_BSPC,              KC_SPC
+                KC_RGUI,      KC_BSPC,            KC_SPC
     ),
 /* Keymap 1: Keypad and Fn Layer
  *
@@ -81,8 +81,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_SLCK,  KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_TRNS,
         KC_PSCR,  KC_F11,   KC_F12,   KC_INS,   KC_HOME,  KC_PGUP,
         KC_LSFT,  KC_NO,    KC_NO,    KC_DEL,   KC_END,   KC_PGDN,  ALL_T(KC_NO),
-        KC_FN4,   KC_NO,    KC_TRNS,  KC_RBRC,  KC_NUHS,
-                                                          KC_FN4,   KC_LCTL,
+        KC_FN3,   KC_NO,    KC_TRNS,  KC_RBRC,  KC_NUHS,
+                                                          KC_FN3,   KC_LCTL,
                                                                     KC_LALT,
                                                 KC_ENT,   KC_DEL,   KC_LGUI,
         // right hand
@@ -90,12 +90,96 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 KC_TRNS,      KC_NO,      KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_JYEN,
                               KC_NO,      KC_P1,   KC_P2,   KC_P3,   KC_PPLS, KC_PENT,
                 MEH_T(KC_NO), KC_NO,      KC_P0,   KC_PCMM, KC_PDOT, KC_PSLS, KC_RSFT,
-                                          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_FN4,
-                KC_RCTL,      KC_FN4,
+                                          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_FN3,
+                KC_RCTL,      KC_FN3,
                 KC_RALT,
                 KC_RGUI,      KC_BSPC,    KC_SPC
 ),
-/* Keymap 2: Mouse keys
+/* Keymap 2: Reverse basic layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |   -    |   0  |   9  |   8  |   7  |   6  |  =   |           |  Esc |   5  |   4  |   3  |   2  |   1  |   `    |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |   \    |   P  |   O  |   I  |   U  |   Y  |  NO  |           |  NO  |   T  |   R  |   E  |   W  |   Q  | Tab    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |   '    |   ;  |   L  |   K  |   J  |   H  |------|           |------|   G  |   F  |   D  |   S  |   A  | LCtrl  |
+ * |--------+------+------+------+------+------| Meh  |           | Hyper|------+------+------+------+------+--------|
+ * | RShift |   /  |   .  |   ,  |   M  |   N  |      |           |      |   B  |   V  |   C  |   X  |   Z  | LShift |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   | TRNS | Left |  Up  | Down | Right|                                       |   ]  |   [  |  NO  |  NO  | TRNS |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        | TRNS | RCtl |       | LCtl | TRNS |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      | RAlt |       | LAlt |      |      |
+ *                                 |Space |  BS  |------|       |------| DEL  | Enter|
+ *                                 |      |      | RGui |       | LGui |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+//
+[BASR] = KEYMAP(
+        // left hand
+        KC_MINS,  KC_0,     KC_9,   KC_8,     KC_7,     KC_6,     KC_EQL,
+        KC_BSLS,  KC_P,     KC_O,   KC_I,     KC_U,     KC_Y,     KC_NO,
+        KC_QUOT,  KC_SCLN,  KC_L,   KC_K,     KC_J,     KC_H,
+        KC_RSFT,  KC_SLSH,  KC_DOT, KC_COMM,  KC_M,     KC_N,     MEH_T(KC_NO),
+        KC_TRNS,  KC_LEFT,  KC_UP,  KC_DOWN,  KC_RGHT,
+                                                        KC_TRNS,  KC_RCTL,
+                                                                  KC_RALT,
+                                              KC_SPC,   KC_BSPC,  KC_RGUI,
+        // right hand
+                KC_ESC,       KC_5,     KC_4,     KC_3,     KC_2,   KC_1,   KC_GRV,
+                KC_NO,        KC_T,     KC_R,     KC_E,     KC_W,   KC_Q,   KC_TAB,
+                              KC_G,     KC_F,     KC_D,     KC_S,   KC_A,   KC_LCTL,
+                ALL_T(KC_NO), KC_B,     KC_V,     KC_C,     KC_X,   KC_Z,   KC_LSFT,
+                                        KC_RBRC,  KC_LBRC,  KC_NO,  KC_NO,  KC_TRNS,
+                KC_LCTL,      KC_TRNS,
+                KC_LALT,
+                KC_LGUI,      KC_DEL,   KC_ENT
+),
+/* Keymap 3: Reverse keypad and Fn Layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |  INT1  |  KP* |  KP9 |  KP8 |  KP7 |NumLck|  KP= |           |  Esc |  F5  |  F4  |  F3  |  F2  |  F1  |  PrtSc |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |  INT3  |  KP- |  KP6 |  KP5 |  KP4 |  NO  |  NO  |           |  NO  |  F10 |  F9  |  F8  |  F7  |  F6  |  ScrLk |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |KP Enter|  KP+ |  KP3 |  KP2 |  KP1 |  NO  |------|           |------| PgUp | Home |Insert|  F12 |  F11 |  Pause |
+ * |--------+------+------+------+------+------| Meh  |           | Hyper|------+------+------+------+------+--------|
+ * | RShift |  KP/ |  KP. |  KP, |  KP0 |  NO  |      |           |      |PgDown| End  |Delete|  NO  |  NO  | LShift |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   | TRNS | Left |  Up  | Down | Right|                                       | NUHS |   ]  |  NO  |  NO  | TRNS |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        | TRNS | RCtl |       | LCtl | TRNS |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      | RAlt |       | LAlt |      |      |
+ *                                 |Sapce |  BS  |------|       |------| DEL  |Enter |
+ *                                 |      |      | RGui |       | LGui |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+// Reverse keypad and Fn
+[KPDR] = KEYMAP(
+        // left hand
+        KC_INT1,  KC_PAST,  KC_P9,    KC_P8,    KC_P7,    KC_NLCK,  KC_PEQL,
+        KC_INT3,  KC_PMNS,  KC_P6,    KC_P5,    KC_P4,    KC_NO,    KC_NO,
+        KC_PENT,  KC_PPLS,  KC_P3,    KC_P2,    KC_P1,    KC_NO,
+        KC_RSFT,  KC_PSLS,  KC_PDOT,  KC_PCMM,  KC_P0,    KC_NO,    MEH_T(KC_NO),
+        KC_TRNS,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RGHT,
+                                                          KC_TRNS,  KC_RCTL,
+                                                                    KC_RALT,
+                                                KC_SPC,   KC_BSPC,  KC_RGUI,
+        // right hand
+                KC_ESC,       KC_F5,    KC_F4,    KC_F3,    KC_F2,    KC_F1,    KC_PSCR,
+                KC_NO,        KC_F10,   KC_F9,    KC_F8,    KC_F7,    KC_F6,    KC_SLCK,
+                              KC_PGUP,  KC_HOME,  KC_INS,   KC_F12,   KC_F11,   KC_PAUS,
+                ALL_T(KC_NO), KC_PGDN,  KC_END,   KC_DEL,   KC_NO,    KC_NO,    KC_LSFT,
+                                        KC_NUHS,  KC_RBRC,  KC_NO,    KC_NO,    KC_TRNS,
+                KC_LCTL,      KC_TRNS,
+                KC_LALT,
+                KC_LGUI,      KC_DEL,   KC_ENT
+),
+/* Keymap 4: Mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   ESC  |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  | F10  |  F11   |
@@ -137,97 +221,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 KC_TRNS,
                 KC_TRNS,  KC_BTN2,  KC_BTN1
 ),
-/* Keymap 3: Reverse basic layer
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   -    |   0  |   9  |   8  |   7  |   6  |  =   |           |  Esc |   5  |   4  |   3  |   2  |   1  |   `    |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   \    |   P  |   O  |   I  |   U  |   Y  |  NO  |           |  NO  |   T  |   R  |   E  |   W  |   Q  | Tab    |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |   '    |   ;  |   L  |   K  |   J  |   H  |------|           |------|   G  |   F  |   D  |   S  |   A  | LCtrl  |
- * |--------+------+------+------+------+------| Meh  |           | Hyper|------+------+------+------+------+--------|
- * | RShift |   /  |   .  |   ,  |   M  |   N  |      |           |      |   B  |   V  |   C  |   X  |   Z  | LShift |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | TRNS | Left |  Up  | Down | Right|                                       |   ]  |   [  |  NO  |  NO  | TRNS |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        | TRNS | RCtl |       | LCtl | TRNS |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | RAlt |       | LAlt |      |      |
- *                                 |Space |  BS  |------|       |------| DEL  | Enter|
- *                                 |      |      | RGui |       | LGui |      |      |
- *                                 `--------------------'       `--------------------'
- */
-//
-[BASE_R] = KEYMAP(
-        // left hand
-        KC_MINS,  KC_0,     KC_9,   KC_8,     KC_7,     KC_6,     KC_EQL,
-        KC_BSLS,  KC_P,     KC_O,   KC_I,     KC_U,     KC_Y,     KC_NO,
-        KC_QUOT,  KC_SCLN,  KC_L,   KC_K,     KC_J,     KC_H,
-        KC_RSFT,  KC_SLSH,  KC_DOT, KC_COMM,  KC_M,     KC_N,     MEH_T(KC_NO),
-        KC_TRNS,  KC_LEFT,  KC_UP,  KC_DOWN,  KC_RGHT,
-                                                        KC_TRNS,  KC_RCTL,
-                                                                  KC_RALT,
-                                              KC_SPC,   KC_BSPC,  KC_RGUI,
-        // right hand
-                KC_ESC,       KC_5,     KC_4,     KC_3,     KC_2,   KC_1,   KC_GRV,
-                KC_NO,        KC_T,     KC_R,     KC_E,     KC_W,   KC_Q,   KC_TAB,
-                              KC_G,     KC_F,     KC_D,     KC_S,   KC_A,   KC_LCTL,
-                ALL_T(KC_NO), KC_B,     KC_V,     KC_C,     KC_X,   KC_Z,   KC_LSFT,
-                                        KC_RBRC,  KC_LBRC,  KC_NO,  KC_NO,  KC_TRNS,
-                KC_LCTL,      KC_TRNS,
-                KC_LALT,
-                KC_LGUI,      KC_DEL,   KC_ENT
-),
-/* Keymap 4: Reverse keypad and Fn Layer
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |  INT1  |  KP* |  KP9 |  KP8 |  KP7 |NumLck|  KP= |           |  Esc |  F5  |  F4  |  F3  |  F2  |  F1  |  PrtSc |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |  INT3  |  KP- |  KP6 |  KP5 |  KP4 |  NO  |  NO  |           |  NO  |  F10 |  F9  |  F8  |  F7  |  F6  |  ScrLk |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |KP Enter|  KP+ |  KP3 |  KP2 |  KP1 |  NO  |------|           |------| PgUp | Home |Insert|  F12 |  F11 |  Pause |
- * |--------+------+------+------+------+------| Meh  |           | Hyper|------+------+------+------+------+--------|
- * | RShift |  KP/ |  KP. |  KP, |  KP0 |  NO  |      |           |      |PgDown| End  |Delete|  NO  |  NO  | LShift |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | TRNS | Left |  Up  | Down | Right|                                       | NUHS |   ]  |  NO  |  NO  | TRNS |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        | TRNS | RCtl |       | LCtl | TRNS |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | RAlt |       | LAlt |      |      |
- *                                 |Sapce |  BS  |------|       |------| DEL  |Enter |
- *                                 |      |      | RGui |       | LGui |      |      |
- *                                 `--------------------'       `--------------------'
- */
-// Reverse keypad and Fn
-[KPAD_R] = KEYMAP(
-        // left hand
-        KC_INT1,  KC_PAST,  KC_P9,    KC_P8,    KC_P7,    KC_NLCK,  KC_PEQL,
-        KC_INT3,  KC_PMNS,  KC_P6,    KC_P5,    KC_P4,    KC_NO,    KC_NO,
-        KC_PENT,  KC_PPLS,  KC_P3,    KC_P2,    KC_P1,    KC_NO,
-        KC_RSFT,  KC_PSLS,  KC_PDOT,  KC_PCMM,  KC_P0,    KC_NO,    MEH_T(KC_NO),
-        KC_TRNS,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RGHT,
-                                                          KC_TRNS,  KC_RCTL,
-                                                                    KC_RALT,
-                                                KC_SPC,   KC_BSPC,  KC_RGUI,
-        // right hand
-                KC_ESC,       KC_F5,    KC_F4,    KC_F3,    KC_F2,    KC_F1,    KC_PSCR,
-                KC_NO,        KC_F10,   KC_F9,    KC_F8,    KC_F7,    KC_F6,    KC_SLCK,
-                              KC_PGUP,  KC_HOME,  KC_INS,   KC_F12,   KC_F11,   KC_PAUS,
-                ALL_T(KC_NO), KC_PGDN,  KC_END,   KC_DEL,   KC_NO,    KC_NO,    KC_LSFT,
-                                        KC_NUHS,  KC_RBRC,  KC_NO,    KC_NO,    KC_TRNS,
-                KC_LCTL,      KC_TRNS,
-                KC_LALT,
-                KC_LGUI,      KC_DEL,   KC_ENT
-),
 };
 
 const uint16_t PROGMEM fn_actions[] = {
   [1] = ACTION_LAYER_TAP_TOGGLE(KPAD),                // FN1 - Momentary Layer 1 (Keypad)
-  [2] = ACTION_LAYER_TAP_TOGGLE(MOUS),                // FN2 - Momentary Layer 2 (Mouse)
-  [3] = ACTION_LAYER_TAP_TOGGLE(BASE_R),              // FN3 - Momentary Layer 3 (Reverse Base)
-  [4] = ACTION_LAYER_TAP_TOGGLE(KPAD_R)               // FN4 - Momentary Layer 4 (Reverse Keypad)
+  [2] = ACTION_LAYER_TAP_TOGGLE(BASR),                // FN2 - Momentary Layer 3 (Reverse Base)
+  [3] = ACTION_LAYER_TAP_TOGGLE(KPDR),                // FN3 - Momentary Layer 4 (Reverse Keypad)
+  [4] = ACTION_LAYER_TAP_TOGGLE(MOUS)                 // FN4 - Momentary Layer 2 (Mouse)
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
@@ -283,11 +283,11 @@ void matrix_scan_user(void) {
             ergodox_right_led_on(led);
             ergodox_right_led_set(led, leds[led]);
             break;
-        case BASE_R:
+        case BASR:
             ergodox_right_led_on(3);
             ergodox_right_led_set(3, 7);
             break;
-        case KPAD_R:
+        case KPDR:
             ergodox_right_led_on(1);
             ergodox_right_led_set(1, 7);
             ergodox_right_led_on(3);
