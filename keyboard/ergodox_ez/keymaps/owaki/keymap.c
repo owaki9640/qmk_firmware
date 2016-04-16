@@ -6,7 +6,7 @@
 #define KPAD 1   // Arrow and keypad
 #define BASR 2   // Reverse basic layer
 #define KPDR 3   // Reverse arrow and keypad
-#define MOUS 4   // Mouse keys
+#define NAVI 4   // Navigation and Mouse keys
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -179,47 +179,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 KC_LALT,
                 KC_LGUI,      KC_DEL,   KC_ENT
 ),
-/* Keymap 4: Mouse keys
+/* Keymap 4: Navigation and Mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   ESC  |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  | F10  |  F11   |
+ * |    `   | Btn1 |WhLeft| WhUp |WhDown|WhRght| Esc  |           |   =  |WhLeft|WhDown| WhUp |WhRght| Btn1 |    -   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |WhLeft| WhUp |WhDown|WhRght|  NO  |           |  NO  |WhLeft|WhDown| WhUp |WhRght|      |  F12   |
+ * |  Tab   | Btn2 |MsLeft| MsUp |MsDown|MsRght|  NO  |           |  NO  |MsLeft|MsDown| MsUp |MsRght| Btn2 |    \   |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |MsLeft| MsUp |MsDown|MsRght|------|           |------|MsLeft|MsDown| MsUp |MsRght|      |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        | Btn4 | Btn3 | Btn2 | Btn1 | ESC  |      |           |      | ESC  | Btn1 | Btn2 | Btn3 | Btn4 |        |
+ * |  LCtrl | Btn3 | Left |  Up  | Down | Right|------|           |------| Left | Down |  Up  | Right| Btn3 |    '   |
+ * |--------+------+------+------+------+------| TRNS |           | TRNS |------+------+------+------+------+--------|
+ * | LShift | Btn4 | End  | PgUp |PgDown| Home |      |           |      | Home |PgDown| PgUp | End  | Btn4 | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |  NO  |  NO  | Acc2 | Acc1 | Acc0 |                                       | Acc0 | Acc1 | Acc2 | Btn5 |  NO  |
+ *   |  NO  | TRNS | Acc2 | Acc1 | Acc0 |                                       | Acc0 | Acc1 | Acc2 | Btn5 |  NO  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |  NO  |      |       |      |  NO  |
+ *                                        |  NO  | LCtl |       | RCtl |  NO  |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      | LAlt |       | RAlt |      |      |
  *                                 | Btn1 | Btn2 |------|       |------| Btn2 | Btn1 |
- *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      | LGui |       | RGui |      |      |
  *                                 `--------------------'       `--------------------'
  */
-// MOUSE
-[MOUS] = KEYMAP(
+// Navi and MOUSE
+[NAVI] = KEYMAP(
         // left hand
-        KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_TRNS,
-        KC_TRNS,  KC_TRNS,  KC_WH_L,  KC_WH_U,  KC_WH_D,  KC_WH_R,  KC_NO,
-        KC_TRNS,  KC_TRNS,  KC_MS_L,  KC_MS_U,  KC_MS_D,  KC_MS_R,
-        KC_TRNS,  KC_BTN4,  KC_BTN3,  KC_BTN2,  KC_BTN1,  KC_ESC,   KC_TRNS,
+        KC_GRV,   KC_BTN1,  KC_WH_L,  KC_WH_U,  KC_WH_D,  KC_WH_R,  KC_ESC,
+        KC_TAB,   KC_BTN2,  KC_MS_L,  KC_MS_U,  KC_MS_D,  KC_MS_R,  KC_NO,
+        KC_LCTL,  KC_BTN3,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RGHT,
+        KC_LSFT,  KC_BTN4,  KC_END,   KC_PGUP,  KC_PGDN,  KC_HOME,  KC_TRNS,
         KC_NO,    KC_TRNS,  KC_ACL2,  KC_ACL1,  KC_ACL0,
-                                                          KC_NO,    KC_TRNS,
-                                                                    KC_TRNS,
-                                                KC_BTN1,  KC_BTN2,  KC_TRNS,
+                                                          KC_NO,    KC_LCTL,
+                                                                    KC_LALT,
+                                                KC_BTN1,  KC_BTN2,  KC_LGUI,
         // right hand
-                KC_TRNS,  KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,
-                KC_NO,    KC_WH_L,  KC_WH_D,  KC_WH_U,  KC_WH_R,  KC_TRNS,  KC_F12,
-                          KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,  KC_TRNS,  KC_TRNS,
-                KC_TRNS,  KC_ESC,   KC_BTN1,  KC_BTN2,  KC_BTN3,  KC_BTN4,  KC_TRNS,
+                KC_EQL,   KC_WH_L,  KC_WH_D,  KC_WH_U,  KC_WH_R,  KC_BTN1,  KC_MINS,
+                KC_NO,    KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,  KC_BTN2,  KC_BSLS,
+                          KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_BTN3,  KC_QUOT,
+                KC_TRNS,  KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   KC_BTN4,  KC_RSFT,
                                     KC_ACL0,  KC_ACL1,  KC_ACL2,  KC_BTN5,  KC_NO,
-                KC_TRNS,  KC_NO,
-                KC_TRNS,
-                KC_TRNS,  KC_BTN2,  KC_BTN1
+                KC_RCTL,  KC_NO,
+                KC_RALT,
+                KC_RGUI,  KC_BTN2,  KC_BTN1
 ),
 };
 
@@ -227,7 +227,7 @@ const uint16_t PROGMEM fn_actions[] = {
   [1] = ACTION_LAYER_TAP_TOGGLE(KPAD),                // FN1 - Momentary Layer 1 (Keypad)
   [2] = ACTION_LAYER_TAP_TOGGLE(BASR),                // FN2 - Momentary Layer 3 (Reverse Base)
   [3] = ACTION_LAYER_TAP_TOGGLE(KPDR),                // FN3 - Momentary Layer 4 (Reverse Keypad)
-  [4] = ACTION_LAYER_TAP_TOGGLE(MOUS)                 // FN4 - Momentary Layer 2 (Mouse)
+  [4] = ACTION_LAYER_TAP_TOGGLE(NAVI)                 // FN4 - Momentary Layer 2 (Navi/Mouse)
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
@@ -269,7 +269,7 @@ void matrix_scan_user(void) {
             ergodox_right_led_on(1);
             ergodox_right_led_set(1, 7);
             break;
-        case MOUS:
+        case NAVI:
             led = 2;
             leds[led] = 7;
 /*             if (leds[led] == 255) { */
