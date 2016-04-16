@@ -253,45 +253,26 @@ void matrix_init_user(void) {
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
 
-    static uint8_t leds[4];
-    uint8_t led;
     uint8_t layer = biton32(layer_state);
 
-    ergodox_board_led_off();
-    ergodox_right_led_1_off();
-    ergodox_right_led_2_off();
-    ergodox_right_led_3_off();
+    ergodox_led_all_off();
+    ergodox_led_all_set(LED_BRIGHTNESS_LO);
     switch (layer) {
       // TODO: Make this relevant to the ErgoDox EZ.
         case BASE:
             break;
         case KPAD:
-            ergodox_right_led_on(1);
-            ergodox_right_led_set(1, 7);
+            ergodox_right_led_1_on();
             break;
         case NAVI:
-            led = 2;
-            leds[led] = 7;
-/*             if (leds[led] == 255) { */
-/*                 leds[led] = 0; */
-/*             } */
-/*             else { */
-/*                 leds[led]++; */
-/*             } */
-/*             ergodox_right_led_on(led); */
-/*             ergodox_right_led_set(led, leds[led]); */
-            ergodox_right_led_on(led);
-            ergodox_right_led_set(led, leds[led]);
+            ergodox_right_led_2_on();
             break;
         case BASR:
-            ergodox_right_led_on(3);
-            ergodox_right_led_set(3, 7);
+            ergodox_right_led_3_on();
             break;
         case KPDR:
-            ergodox_right_led_on(1);
-            ergodox_right_led_set(1, 7);
-            ergodox_right_led_on(3);
-            ergodox_right_led_set(3, 7);
+            ergodox_right_led_1_on();
+            ergodox_right_led_3_on();
             break;
         default:
             // none
