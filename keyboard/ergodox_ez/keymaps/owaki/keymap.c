@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * | PrtSc  |  F1  |  F2  |  F3  |  F4  |  F5  |  Esc |           |  KP= |NumLck|  KP7 |  KP8 |  KP9 |  KP* |  INT1  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | ScrLk  |  F6  |  F7  |  F8  |  F9  |  F10 | TRNS |           | TRNS |  NO  |  KP4 |  KP5 |  KP6 |  KP- |  INT3  |
+ * | ScrLk  |  F6  |  F7  |  F8  |  F9  |  F10 | TRNS |           | TRNS |  Tab |  KP4 |  KP5 |  KP6 |  KP- |  INT3  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Pause  |  F11 |  F12 |Insert| Home | PgUp |------|           |------|  NO  |  KP1 |  KP2 |  KP3 |  KP+ |KP Enter|
  * |--------+------+------+------+------+------|  L4  |           |  L4  |------+------+------+------+------+--------|
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_ENT,   KC_DEL,   KC_TRNS,
         // right hand
                 KC_PEQL,  KC_NLCK,  KC_P7,   KC_P8,   KC_P9,   KC_PAST, KC_RO,
-                KC_TRNS,  KC_NO,    KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_JYEN,
+                KC_TRNS,  KC_TAB,   KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_JYEN,
                           KC_NO,    KC_P1,   KC_P2,   KC_P3,   KC_PPLS, KC_PENT,
                 KC_FN4,   KC_NO,    KC_P0,   KC_PCMM, KC_PDOT, KC_PSLS, KC_TRNS,
                                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_FN3,
@@ -142,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |  INT1  |  KP* |  KP9 |  KP8 |  KP7 |NumLck|  KP= |           |  Esc |  F5  |  F4  |  F3  |  F2  |  F1  |  PrtSc |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |  INT3  |  KP- |  KP6 |  KP5 |  KP4 |  NO  |  NO  |           |  NO  |  F10 |  F9  |  F8  |  F7  |  F6  |  ScrLk |
+ * |  INT3  |  KP- |  KP6 |  KP5 |  KP4 |  Tab |  NO  |           |  NO  |  F10 |  F9  |  F8  |  F7  |  F6  |  ScrLk |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |KP Enter|  KP+ |  KP3 |  KP2 |  KP1 |  NO  |------|           |------| PgUp | Home |Insert|  F12 |  F11 |  Pause |
  * |--------+------+------+------+------+------|  NO  |           |  NO  |------+------+------+------+------+--------|
@@ -162,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [KPDR] = KEYMAP(
         // left hand
         KC_INT1,  KC_PAST,  KC_P9,    KC_P8,    KC_P7,    KC_NLCK,  KC_PEQL,
-        KC_INT3,  KC_PMNS,  KC_P6,    KC_P5,    KC_P4,    KC_NO,    KC_NO,
+        KC_INT3,  KC_PMNS,  KC_P6,    KC_P5,    KC_P4,    KC_TAB,   KC_NO,
         KC_PENT,  KC_PPLS,  KC_P3,    KC_P2,    KC_P1,    KC_NO,
         KC_TRNS,  KC_PSLS,  KC_PDOT,  KC_PCMM,  KC_P0,    KC_NO,    KC_NO,
         KC_TRNS,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RGHT,
