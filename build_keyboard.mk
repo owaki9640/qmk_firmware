@@ -180,6 +180,14 @@ ifeq ($(strip $(SERIAL_LINK_ENABLE)), yes)
 	VAPTH += $(SERIAL_PATH)
 endif
 
+ifneq ($(strip $(VARIABLE_TRACE)),)
+	SRC += $(QUANTUM_DIR)/variable_trace.c
+	OPT_DEFS += -DNUM_TRACED_VARIABLES=$(strip $(VARIABLE_TRACE))
+ifneq ($(strip $(MAX_VARIABLE_TRACE_SIZE)),)
+	OPT_DEFS += -DMAX_VARIABLE_TRACE_SIZE=$(strip $(MAX_VARIABLE_TRACE_SIZE))
+endif
+endif
+
 # Optimize size but this may cause error "relocation truncated to fit"
 #EXTRALDFLAGS = -Wl,--relax
 
@@ -191,6 +199,7 @@ endif
 VPATH += $(KEYBOARD_PATH)
 VPATH += $(COMMON_VPATH)
 
+include $(TMK_PATH)/protocol.mk
 
 include $(TMK_PATH)/common.mk
 SRC += $(TMK_COMMON_SRC)
