@@ -103,7 +103,7 @@ void matrix_init(void)
 uint8_t matrix_scan(void)
 {
     for (uint8_t i = 0; i < MATRIX_ROWS; i++) {
-        wait_us(30000);  // without this wait read unstable value.
+        wait_us(30);
         matrix_row_t cols = read_cols(i);
         if (matrix_debouncing[i] != cols) {
             matrix_debouncing[i] = cols;
@@ -176,6 +176,8 @@ static matrix_row_t read_cols(uint8_t row)
         return (matrix_row_t)0;
     }
 
+//    print("I2C TX OK");
+
     status = i2cMasterReceiveTimeout(i2cDrivers[row], addresses[row], matrix_row_read, 2, US2ST(100));
 
     if (MSG_OK != status) {
@@ -185,6 +187,11 @@ static matrix_row_t read_cols(uint8_t row)
         return (matrix_row_t)0;
     }
 
-    return (((matrix_row_t)!matrix_row_read[0])<<8) | (matrix_row_t)(!matrix_row_read[1]);
+//    print("I2C RX OK");
+
+    uint8_t low = ~matrix_row_read[0];
+    uint8_t high = ~matrix_row_read[1];
+
+    return high<<8 | low;
 }
 
